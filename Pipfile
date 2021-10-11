@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 regression = "*"
+flask = "*"
 
 [dev-packages]
 
