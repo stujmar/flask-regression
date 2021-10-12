@@ -40,3 +40,9 @@ def apply_regression(data):
 
     # Return pipeline
     return pipeline
+
+def simple_results(data):
+    """
+    Pass in json of key data pairs and return a density plot of the data.
+    """
+    pass
