@@ -1,15 +1,20 @@
 import flask
+from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 import requests 
 
 print('... loading flask app ...', flask.__version__)
 
-app = flask.Flask(__name__)
+app = Flask(__name__)
 app.config["DEBUG"] = True
 
 @app.route('/')
 def index():
     return '<h1>Hello World!</h1>'
 
+@app.route('/hello')
+def hello():
+    # Flask knows to look in templates folder.
+    return render_template('index.html')
 
 # @app.route('/', methods=['GET'])
 # def home():
