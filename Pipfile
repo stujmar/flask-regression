@@ -6,6 +6,7 @@ name = "pypi"
 [packages]
 regression = "*"
 flask = "*"
+requests = "*"
 
 [dev-packages]
 
