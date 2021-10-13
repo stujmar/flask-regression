@@ -1,4 +1,5 @@
 import flask
+import requests 
 
 print('... loading flask app ...', flask.__version__)
 
