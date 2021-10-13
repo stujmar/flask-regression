@@ -1,6 +1,7 @@
 import flask
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
 from flask_sqlalchemy import SQLAlchemy
+from datetime import datetime
 import requests 
 
 
@@ -14,11 +15,15 @@ db = SQLAlchemy(app)
 
 class Todo(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    title = db.Column(db.String(200))
+    content = db.Column(db.String(200), nullable=False)
     complete = db.Column(db.Boolean)
-    def __init__(self, title, complete):
-        self.title = title
-        self.complete = complete
+    date_created = db.Column(db.DateTime, default=datetime.utcnow)
+    # def __init__(self, title, complete, content):
+    #     self.title = title
+    #     self.content = content
+    #     self.complete = complete
+    def __repr__(self):
+        return '<Task %r>' % self.id
 
 @app.route('/')
 def index():
