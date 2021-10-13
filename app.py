@@ -1,11 +1,24 @@
 import flask
 from flask import Flask, render_template, request, redirect, url_for, flash, jsonify
+from flask_sqlalchemy import SQLAlchemy
 import requests 
+
 
 print('... loading flask app ...', flask.__version__)
 
 app = Flask(__name__)
 app.config["DEBUG"] = True
+# relative path to the database file
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///test.db'
+db = SQLAlchemy(app)
+
+class Todo(db.Model):
+    id = db.Column(db.Integer, primary_key=True)
+    title = db.Column(db.String(200))
+    complete = db.Column(db.Boolean)
+    def __init__(self, title, complete):
+        self.title = title
+        self.complete = complete
 
 @app.route('/')
 def index():
