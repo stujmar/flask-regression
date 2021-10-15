@@ -30,12 +30,12 @@ print(db)
 
 @app.route('/')
 def index():
-    return '<h1>Hello World!</h1>'
+    # Flask knows to look in templates folder.
+    return render_template('index.html')
 
 @app.route('/hello')
 def hello():
-    # Flask knows to look in templates folder.
-    return render_template('index.html')
+    return '<h1>Hello World!</h1>'
 
 # @app.route('/', methods=['GET'])
 # def home():
