@@ -26,6 +26,7 @@ class Todo(db.Model):
         return '<Task %r>' % self.id
 
 db.create_all()
+print(db)
 
 @app.route('/')
 def index():
