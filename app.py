@@ -31,7 +31,14 @@ print(db)
 @app.route('/', methods=['GET', 'POST']) # route decorators to allow for GET and POST requests
 def index():
     if request.method == 'POST':
-        return 'Hello'
+        task_content = request.form['content']
+        new_task = Todo(content=task_content)
+        try:
+            db.session.add(new_task)
+            db.session.commit()
+            return redirect('/')
+        except:
+            return 'There was an issue adding your task'
     else:
         return render_template('index.html')
     # Flask knows to look in templates folder.
