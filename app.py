@@ -31,7 +31,7 @@ print(db)
 @app.route('/', methods=['GET', 'POST']) # route decorators to allow for GET and POST requests
 def index():
     if request.method == 'POST':
-        pass
+        return 'Hello'
     else:
         return render_template('index.html')
     # Flask knows to look in templates folder.
