@@ -28,7 +28,7 @@ class Todo(db.Model):
 db.create_all()
 print(db)
 
-@app.route('/')
+@app.route('/', methods=['GET', 'POST']) # route decorators to allow for GET and POST requests
 def index():
     # Flask knows to look in templates folder.
     return render_template('index.html')
