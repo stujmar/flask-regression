@@ -40,6 +40,7 @@ def index():
         except:
             return 'There was an issue adding your task'
     else:
+        tasks = Todo.query.order_by(Todo.date_created).all() # get all tasks from the database
         return render_template('index.html')
     # Flask knows to look in templates folder.
 
