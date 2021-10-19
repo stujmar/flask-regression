@@ -54,6 +54,10 @@ def delete(id):
     except:
         return 'There was a problem deleting that task'
 
+@app.rout('/update/<int:id>', methods=['GET', 'POST'])
+def update(id):
+   return ''
+
 @app.route('/hello')
 def hello():
     return '<h1>Hello World!</h1>'
