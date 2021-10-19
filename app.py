@@ -54,7 +54,7 @@ def delete(id):
     except:
         return 'There was a problem deleting that task'
 
-@app.rout('/update/<int:id>', methods=['GET', 'POST'])
+@app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
    return ''
 
