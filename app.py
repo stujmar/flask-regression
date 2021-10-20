@@ -28,7 +28,7 @@ class Todo(db.Model):
 db.create_all()
 print(db)
 
-@app.route('/', methods=['GET', 'POST']) # route decorators to allow for GET and POST requests
+@app.route('/tasks', methods=['GET', 'POST']) # route decorators to allow for GET and POST requests
 def index():
     if request.method == 'POST':
         task_content = request.form['content']
@@ -36,12 +36,12 @@ def index():
         try:
             db.session.add(new_task)
             db.session.commit()
-            return redirect('/')
+            return redirect('/tasks')
         except:
             return 'There was an issue adding your task'
     else:
         tasks = Todo.query.order_by(Todo.date_created).all() # get all tasks from the database
-        return render_template('index.html', tasks=tasks)
+        return render_template('tasks.html', tasks=tasks)
     # Flask knows to look in templates folder.
 
 @app.route('/delete/<int:id>')
@@ -50,7 +50,7 @@ def delete(id):
     try:
         db.session.delete(task_to_delete)
         db.session.commit()
-        return redirect('/')
+        return redirect('/tasks')
     except:
         return 'There was a problem deleting that task'
 
@@ -62,7 +62,7 @@ def update(id):
         task.content = request.form['content']
         try:
             db.session.commit()
-            return redirect('/')
+            return redirect('/tasks')
         except:
             return 'There was an issue updating your task'
     else: 
