@@ -56,7 +56,10 @@ def delete(id):
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
-   return ''
+    if request.method == 'POST':
+       pass
+    else: 
+        return "Hello"
 
 @app.route('/hello')
 def hello():
