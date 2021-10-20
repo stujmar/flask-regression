@@ -59,7 +59,7 @@ def update(id):
     if request.method == 'POST':
        pass
     else: 
-        return "Hello"
+        return render_template('update.html')
 
 @app.route('/hello')
 def hello():
