@@ -56,10 +56,12 @@ def delete(id):
 
 @app.route('/update/<int:id>', methods=['GET', 'POST'])
 def update(id):
+    task = Todo.query.get_or_404(id)
+
     if request.method == 'POST':
        pass
     else: 
-        return render_template('update.html')
+        return render_template('update.html', task=task)
 
 @app.route('/hello')
 def hello():
