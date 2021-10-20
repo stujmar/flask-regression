@@ -28,8 +28,12 @@ class Todo(db.Model):
 db.create_all()
 print(db)
 
-@app.route('/tasks', methods=['GET', 'POST']) # route decorators to allow for GET and POST requests
+@app.route('/', methods=['GET', 'POST'])
 def index():
+    return render_template('index.html')
+
+@app.route('/tasks', methods=['GET', 'POST']) # route decorators to allow for GET and POST requests
+def tasks():
     if request.method == 'POST':
         task_content = request.form['content']
         new_task = Todo(content=task_content)
